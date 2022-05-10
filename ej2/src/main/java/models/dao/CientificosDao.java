@@ -22,13 +22,11 @@ public class CientificosDao {
 						+ "('"+cientifico.getDni()+"'),('"+cientifico.getNomApels()+"');";
 				//la ejecutamos
 				statement.executeUpdate(sql);
-				//TODO: informamos de que se ha insertado correctamente
-						
 				//statement close
 				statement.close();
 				//close conexion
 				conexion.closeConnection();
-						
+				//TODO: informamos de que se ha insertado correctamente
 			} catch (SQLException e) {
 				// TODO: informamos de que NO se ha insertado correctamente
 				//pasamos el error por consola
@@ -55,7 +53,7 @@ public class CientificosDao {
 			statement.execute(sql);
 			statement.close();
 			conexion.closeConnection();
-			
+			//TODO: informamos de que se ha actualizado correctamente
 		} catch (Exception e) {
 			// TODO: handle exception
 			//pasamos el error por consola
@@ -65,5 +63,24 @@ public class CientificosDao {
 	}
 	
 	//TODO: DELETE
-
+	public void deleteCientifico(CientificosDto cientifico) {
+		
+		ConnectionDB conexion = new ConnectionDB();
+		
+		try {
+			Statement statement = conexion.crearConexion().createStatement();
+			String sql = "DELETE FROM cientificos "
+					+ "WHERE DNI='"+cientifico.getDni()+"';";
+			statement.execute(sql);
+			statement.close();
+			conexion.closeConnection();
+			//TODO: informamos de que se ha deleteado correctamente
+		} catch (Exception e) {
+			// TODO: handle exception
+			//pasamos el error por consola
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
 }
