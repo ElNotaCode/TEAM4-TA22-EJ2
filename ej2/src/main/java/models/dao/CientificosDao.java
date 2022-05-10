@@ -62,7 +62,7 @@ public class CientificosDao {
 		
 	}
 	
-	//TODO: DELETE
+	//DELETE
 	public void deleteCientifico(CientificosDto cientifico) {
 		
 		ConnectionDB conexion = new ConnectionDB();

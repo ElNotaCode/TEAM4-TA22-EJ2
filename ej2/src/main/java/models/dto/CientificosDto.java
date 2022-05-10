@@ -4,6 +4,7 @@ public class CientificosDto {
 
 	//esto es un objeto Cientifico, que recogerá todos los datos,
 	//el data transfer object se mandará como parametro al data access object
+	//por tanto se crea primero el dto y luego el dao
 	
 	//buena practica declararlas en private
 	private String dni;
