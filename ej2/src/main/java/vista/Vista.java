@@ -27,14 +27,14 @@ public class Vista extends JFrame {
 	private JTextField textDNI;
 	private JTextField textNomApels;
 	private JTable table;
-	private JTable table_1;
 	private JTextField textFieldID;
 	private JTextField textNombre;
 	private JTextField textHoras;
-	private JTable table_2;
-	private JTable table_3;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textFieldTCientificos;
+	private JTextField textFieldTProyectos;
+	private JTextField textFieldTAsignadoA;
 
 	/**
 	 * Launch the application.
@@ -113,30 +113,10 @@ public class Vista extends JFrame {
 		contentPane.add(PanelTablaCientificos);
 		PanelTablaCientificos.setLayout(null);
 		
-		table_1 = new JTable();
-		table_1.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-			},
-			new String[] {
-				"DNI", "NomApels"
-			}
-		));
-		table_1.setBounds(10, 45, 480, 92);
-		PanelTablaCientificos.add(table_1);
-		
-		JLabel lblHeaderTabla1 = new JLabel("DNI");
-		lblHeaderTabla1.setBounds(10, 22, 45, 13);
-		PanelTablaCientificos.add(lblHeaderTabla1);
-		
-		JLabel lblHeaderTabla2 = new JLabel("NomApels");
-		lblHeaderTabla2.setBounds(255, 22, 91, 13);
-		PanelTablaCientificos.add(lblHeaderTabla2);
+		textFieldTCientificos = new JTextField();
+		textFieldTCientificos.setBounds(10, 20, 480, 117);
+		PanelTablaCientificos.add(textFieldTCientificos);
+		textFieldTCientificos.setColumns(10);
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(Color.BLACK);
@@ -202,34 +182,10 @@ public class Vista extends JFrame {
 		PanelTablaCientificos_1.setBounds(10, 179, 500, 155);
 		contentPane.add(PanelTablaCientificos_1);
 		
-		table_2 = new JTable();
-		table_2.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-			},
-			new String[] {
-				"Nombre", "ID", "Horas"
-			}
-		));
-		table_2.setBounds(10, 45, 480, 92);
-		PanelTablaCientificos_1.add(table_2);
-		
-		JLabel lblHeaderID = new JLabel("ID");
-		lblHeaderID.setBounds(10, 22, 45, 13);
-		PanelTablaCientificos_1.add(lblHeaderID);
-		
-		JLabel lblHeaderPNombre = new JLabel("Nombre");
-		lblHeaderPNombre.setBounds(173, 22, 91, 13);
-		PanelTablaCientificos_1.add(lblHeaderPNombre);
-		
-		JLabel lblHeaderTPHoras = new JLabel("Horas");
-		lblHeaderTPHoras.setBounds(332, 22, 45, 13);
-		PanelTablaCientificos_1.add(lblHeaderTPHoras);
+		textFieldTProyectos = new JTextField();
+		textFieldTProyectos.setColumns(10);
+		textFieldTProyectos.setBounds(10, 28, 480, 117);
+		PanelTablaCientificos_1.add(textFieldTProyectos);
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setForeground(Color.BLACK);
@@ -242,30 +198,10 @@ public class Vista extends JFrame {
 		PanelTablaCientificos_1_1.setBounds(10, 356, 500, 155);
 		contentPane.add(PanelTablaCientificos_1_1);
 		
-		table_3 = new JTable();
-		table_3.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-			},
-			new String[] {
-				"Cientifico", "Proyecto"
-			}
-		));
-		table_3.setBounds(10, 45, 480, 100);
-		PanelTablaCientificos_1_1.add(table_3);
-		
-		JLabel lblHeaderID_1 = new JLabel("ID");
-		lblHeaderID_1.setBounds(10, 22, 45, 13);
-		PanelTablaCientificos_1_1.add(lblHeaderID_1);
-		
-		JLabel lblProyecto_1 = new JLabel("Proyecto");
-		lblProyecto_1.setBounds(256, 22, 45, 13);
-		PanelTablaCientificos_1_1.add(lblProyecto_1);
+		textFieldTAsignadoA = new JTextField();
+		textFieldTAsignadoA.setColumns(10);
+		textFieldTAsignadoA.setBounds(10, 28, 480, 117);
+		PanelTablaCientificos_1_1.add(textFieldTAsignadoA);
 		
 		JPanel Cientificos_2 = new JPanel();
 		Cientificos_2.setLayout(null);
