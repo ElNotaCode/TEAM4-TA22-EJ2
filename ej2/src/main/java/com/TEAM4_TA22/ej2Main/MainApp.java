@@ -1,10 +1,10 @@
-package com.TEAM4_TA22.ej2;
+package com.TEAM4_TA22.ej2Main;
 
 /**
  * Hello world!
  *
  */
-public class App 
+public class MainApp 
 {
     public static void main( String[] args )
     {
