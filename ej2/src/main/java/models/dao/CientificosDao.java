@@ -9,8 +9,8 @@ import models.dto.CientificosDto;
 public class CientificosDao {
 	
 	//CREATE
-	//insertarCientifico, le pasamos por parametro un objeto cientifico
-	public void insertarCientifico(CientificosDto cientifico) {
+	//createCientifico, le pasamos por parametro un objeto cientifico
+	public void createCientifico(CientificosDto cientifico) {
 		//accedemos a la base de datos
 		ConnectionDB conexion = new ConnectionDB();
 		
@@ -40,8 +40,29 @@ public class CientificosDao {
 	//TODO: READ
 	
 	
-	//TODO: UPDATE
-	
+	//UPDATE
+	//también se podría hacer con REPLACE?
+	public void updateCientifico(CientificosDto cientifico) {
+		
+		ConnectionDB conexion = new ConnectionDB();
+		
+		try {
+			Statement statement = conexion.crearConexion().createStatement();
+			String sql = "UPDATE cientificos SET"
+					+ "DNI='" + cientifico.getDni() + "',"
+					+ "NomApels='" + cientifico.getNomApels()+"'"
+					+ "WHERE DNI='"+cientifico.getDni()+"';";
+			statement.execute(sql);
+			statement.close();
+			conexion.closeConnection();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			//pasamos el error por consola
+			System.out.println(e.getMessage());
+		}
+		
+	}
 	
 	//TODO: DELETE
 
