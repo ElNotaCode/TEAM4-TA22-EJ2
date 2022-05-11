@@ -40,7 +40,7 @@ public class CientificosDao {
     }
 	
 	//READ
-	public void readCientifico(String dni) {
+	public CientificosDto readCientifico(String dni) {
 		//Abrimos conexión.
 		ConnectionDB conexion = new ConnectionDB();
 		//Objeto "en blanco" que vamos a usar para, en caso que exista, rellenar los datos del cientifico en especifico.
@@ -72,7 +72,7 @@ public class CientificosDao {
 			// TODO: handle exception
 		}
 		
-		
+		return cientifico;
 		
 	}
 	

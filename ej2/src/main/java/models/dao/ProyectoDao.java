@@ -51,12 +51,12 @@ public class ProyectoDao {
 	}
 	
 	//DELETE
-	public void deleteProyecto(ProyectoDto proyecto){
+	public void deleteProyecto(String dni){
 		ConnectionDB conexion = new ConnectionDB();
 		try {
 			Statement statement = conexion.crearConexion().createStatement();
 			String sql = "DELETE FROM proyecto"
-					+ "WHERE Id='"+proyecto.getId()+"';";
+					+ "WHERE Id='"+ dni +"';";
 			statement.executeUpdate(sql);
 			statement.close();
 			conexion.closeConnection();
