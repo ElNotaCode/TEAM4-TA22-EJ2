@@ -35,6 +35,11 @@ public class CientificosDto {
 	public void setNomApels(String nomApels) {
 		this.nomApels = nomApels;
 	}
+
+	@Override
+	public String toString() {
+		return "CientificosDto [dni=" + dni + ", nomApels=" + nomApels + "]";
+	}
 	
 	
 }
