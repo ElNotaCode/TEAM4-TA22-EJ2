@@ -6,7 +6,7 @@ public class ProyectoDto {
 	private String nombre;
 	private int horas;
 	
-	protected ProyectoDto(String id, String nombre, int horas) {
+	public ProyectoDto(String id, String nombre, int horas) {
 		this.id = id;
 		this.nombre = nombre;
 		this.horas = horas;

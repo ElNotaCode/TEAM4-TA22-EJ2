@@ -9,6 +9,7 @@ import java.sql.SQLException;
 public class ConnectionDB {
 
 		private static String ip = "192.168.1.140";
+		private static String ip2 = "192.168.1.29";
 		private static String user = "remote";
 		private static String password = "Reus_2022";
 		private static Connection conexion = null;

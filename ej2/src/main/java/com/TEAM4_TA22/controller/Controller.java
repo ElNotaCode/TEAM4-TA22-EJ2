@@ -7,21 +7,30 @@ import java.security.PublicKey;
 import models.dao.CientificosDao;
 import models.dao.ProyectoDao;
 import models.dto.CientificosDto;
+import models.dto.ProyectoDto;
 import views.MenuPrincipal;
+import vista.Vista;
 
 public class Controller implements ActionListener {
 	
-		
+	//instnciamos la vista y los Dao 	
 	private CientificosDao cientificos;
 	private ProyectoDao proyecto; 
-	private MenuPrincipal menu; 
+	private CientificosDto crearcientifico;
+	private ProyectoDto crearproyecto;
+
+	private Vista vista; 
 	
 	
-	public Controller(MenuPrincipal menu,CientificosDao cientificos,ProyectoDao proyecto) {
-		this.menu = menu;
+	public Controller(Vista vista,CientificosDao cientificos,ProyectoDao proyecto) {
+		this.vista = vista;
 		this.cientificos=cientificos;
 		this.proyecto=proyecto;
-		this.menu.btnCreate.addActionListener(this);
+		this.vista.btnGuardarCientificos.addActionListener(this); //para activarle un listenner
+		this.vista.btnGuardarProyecto.addActionListener(this);
+		this.vista.btnGuardarAsignado_A.addActionListener(this);
+		
+		vista.setVisible(true);
 	
 		
 	}
@@ -42,10 +51,28 @@ public class Controller implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		if(e.getSource()== this.vista.btnGuardarCientificos) {
+			System.out.println("Guardar Cientificos");
+
+		crearcientifico = new CientificosDto(vista.textDNI.getText(), vista.textNomApels.getText());
+		cientificos.createCientifico(crearcientifico);
+		}
 		
-		CientificosDto cientifico = new CientificosDto(null, null);
+		if(e.getSource() == this.vista.btnGuardarProyecto) {
+			int horas =  Integer.parseInt(vista.textHoras.getText());
+			crearproyecto = new  ProyectoDto(vista.textFieldID.getText(), vista.textNombre.getText(),horas);
+			proyecto.createProyecto(crearproyecto);
+			System.out.println("Guardar Proyecto");
 
-
+			//
+		}
+		
+		
+		if(e.getSource() == this.vista.btnGuardarAsignado_A) {
+			//
+			//
+		}
+		
 		
 		
 	}
