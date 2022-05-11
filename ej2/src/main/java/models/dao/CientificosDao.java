@@ -19,12 +19,10 @@ public class CientificosDao {
         ConnectionDB conexion = new ConnectionDB();
 
             try {
+            	conexion.useDB("proyectos");
                 //creamos statement
                 Statement statement = conexion.crearConexion().createStatement();
                 //creamos la query y las variables las rellenamos con los getters del objeto
-                String Querydb = "USE proyectos;";
-                statement.executeUpdate(Querydb);
-
                 String sql = "INSERT INTO cientificos(DNI,NomApels) VALUES"
                         + "('"+cientifico.getDni()+"','"+cientifico.getNomApels()+"');";
                 //la ejecutamos
@@ -46,6 +44,7 @@ public class CientificosDao {
 	public CientificosDto readCientifico(String dni) {
 		//Abrimos conexión.
 		ConnectionDB conexion = new ConnectionDB();
+		conexion.useDB("proyectos");
 		//Objeto "en blanco" que vamos a usar para, en caso que exista, rellenar los datos del cientifico en especifico.
 		CientificosDto cientifico = new CientificosDto();
 		//Bool para ver si existe.
@@ -53,10 +52,6 @@ public class CientificosDao {
 		
 		try {
 			//creamos statement
-            Statement statement = conexion.crearConexion().createStatement();
-            //creamos la query y las variables las rellenamos con los getters del objeto
-            String Querydb = "USE proyectos;";
-            statement.executeUpdate(Querydb);
 			//Vamos a usar el prepared statement.
 			//Es lo mismo que un statement, pero se hace al revés.
 			//Primero sql.
@@ -97,7 +92,7 @@ public class CientificosDao {
 	public void updateCientifico(CientificosDto cientifico) {
 		
 		ConnectionDB conexion = new ConnectionDB();
-		
+		conexion.useDB("proyectos");
 		try {
 			Statement statement = conexion.crearConexion().createStatement();
 			String sql = "UPDATE cientificos SET"
@@ -120,7 +115,7 @@ public class CientificosDao {
 	public void deleteCientifico(String dni) {
 		
 		ConnectionDB conexion = new ConnectionDB();
-		
+		conexion.useDB("proyectos");
 		try {
 			Statement statement = conexion.crearConexion().createStatement();
 			String sql = "DELETE FROM cientificos "
