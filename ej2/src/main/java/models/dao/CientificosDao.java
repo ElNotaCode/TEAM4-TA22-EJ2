@@ -40,7 +40,7 @@ public class CientificosDao {
     }
 	
 	//READ
-	public void readCientifico(String dni) {
+	public CientificosDto readCientifico(String dni) {
 		//Abrimos conexión.
 		ConnectionDB conexion = new ConnectionDB();
 		//Objeto "en blanco" que vamos a usar para, en caso que exista, rellenar los datos del cientifico en especifico.
@@ -72,32 +72,8 @@ public class CientificosDao {
 			// TODO: handle exception
 		}
 		
-		
-<<<<<<< HEAD
-=======
-			try {
-				//creamos statement
-				Statement statement = conexion.crearConexion().createStatement();
-				//creamos la query y las variables las rellenamos con los getters del objeto
-				String Querydb = "USE proyectos;";
-				statement.executeUpdate(Querydb);
-				
-				String sql = "INSERT INTO cientificos(DNI,NomApels) VALUES"
-						+ "('"+cientifico.getDni()+"','"+cientifico.getNomApels()+"');";
-				//la ejecutamos
-				statement.executeUpdate(sql);
-				//statement close
-				statement.close();
-				//close conexion
-				conexion.closeConnection();
-				//TODO: informamos de que se ha insertado correctamente
-			} catch (SQLException e) {
-				// TODO: informamos de que NO se ha insertado correctamente
-				//pasamos el error por consola
-				System.out.println(e.getMessage());
-			}
->>>>>>> controller
-		
+		return cientifico;
+
 	}
 	
 	//UPDATE
