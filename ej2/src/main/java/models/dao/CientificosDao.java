@@ -1,8 +1,11 @@
 package models.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.mysql.cj.xdevapi.Result;
 
 import models.conexion.ConnectionDB;
 import models.dto.CientificosDto;
@@ -60,19 +63,32 @@ public class CientificosDao {
 			String sql = "SELECT * FROM cientificos WHERE dni = '?'";
 			PreparedStatement preparedStatement = conexion.crearConexion().prepareStatement(sql);
 			preparedStatement.setString(1, dni);
-			preparedStatement.execute();
-			//Necesto recibir el resultado de la consulta.
-			String dniSelect = preparedStatement.getResultSet().getString("DNI");
-			//cientifico.setDni(dniSelect);
-			String NomApels = preparedStatement.getResultSet().getString("NomApels");
-			//cientifico.setDni(dniSelect);
-			cientifico = new CientificosDto(dniSelect,NomApels);
+
+			ResultSet result = preparedStatement.executeQuery();
+			
+			while(result.next()) {
+				existe=true;
+				//Necesto recibir el resultado de la consulta.
+				String dniSelect = result.getString("DNI");
+				//cientifico.setDni(dniSelect);
+				String NomApels = result.getString("NomApels");
+				//cientifico.setDni(dniSelect);
+				cientifico = new CientificosDto(dniSelect,NomApels);
+			}
+			
+			result.close();
+			conexion.closeConnection();
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
 		}
 		
-		return cientifico;
+		if(existe) {
+			return cientifico;
+		}else {
+			return null;
+		}
+		
 
 	}
 	
