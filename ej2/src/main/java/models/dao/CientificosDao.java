@@ -1,8 +1,11 @@
 package models.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.mysql.cj.xdevapi.Result;
 
 import models.conexion.ConnectionDB;
 import models.dto.CientificosDto;
@@ -16,12 +19,10 @@ public class CientificosDao {
         ConnectionDB conexion = new ConnectionDB();
 
             try {
+            	conexion.useDB("proyectos");
                 //creamos statement
                 Statement statement = conexion.crearConexion().createStatement();
                 //creamos la query y las variables las rellenamos con los getters del objeto
-                String Querydb = "USE proyectos;";
-                statement.executeUpdate(Querydb);
-
                 String sql = "INSERT INTO cientificos(DNI,NomApels) VALUES"
                         + "('"+cientifico.getDni()+"','"+cientifico.getNomApels()+"');";
                 //la ejecutamos
@@ -43,6 +44,7 @@ public class CientificosDao {
 	public CientificosDto readCientifico(String dni) {
 		//Abrimos conexión.
 		ConnectionDB conexion = new ConnectionDB();
+		conexion.useDB("proyectos");
 		//Objeto "en blanco" que vamos a usar para, en caso que exista, rellenar los datos del cientifico en especifico.
 		CientificosDto cientifico = new CientificosDto();
 		//Bool para ver si existe.
@@ -50,29 +52,38 @@ public class CientificosDao {
 		
 		try {
 			//creamos statement
-            Statement statement = conexion.crearConexion().createStatement();
-            //creamos la query y las variables las rellenamos con los getters del objeto
-            String Querydb = "USE proyectos;";
-            statement.executeUpdate(Querydb);
 			//Vamos a usar el prepared statement.
 			//Es lo mismo que un statement, pero se hace al revés.
 			//Primero sql.
 			String sql = "SELECT * FROM cientificos WHERE dni = '?'";
 			PreparedStatement preparedStatement = conexion.crearConexion().prepareStatement(sql);
 			preparedStatement.setString(1, dni);
-			preparedStatement.execute();
-			//Necesto recibir el resultado de la consulta.
-			String dniSelect = preparedStatement.getResultSet().getString("DNI");
-			//cientifico.setDni(dniSelect);
-			String NomApels = preparedStatement.getResultSet().getString("NomApels");
-			//cientifico.setDni(dniSelect);
-			cientifico = new CientificosDto(dniSelect,NomApels);
+
+			ResultSet result = preparedStatement.executeQuery();
+			
+			while(result.next()) {
+				existe=true;
+				//Necesto recibir el resultado de la consulta.
+				String dniSelect = result.getString("DNI");
+				//cientifico.setDni(dniSelect);
+				String NomApels = result.getString("NomApels");
+				//cientifico.setDni(dniSelect);
+				cientifico = new CientificosDto(dniSelect,NomApels);
+			}
+			
+			result.close();
+			conexion.closeConnection();
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
 		}
 		
-		return cientifico;
+		if(existe) {
+			return cientifico;
+		}else {
+			return null;
+		}
+		
 
 	}
 	
@@ -81,7 +92,7 @@ public class CientificosDao {
 	public void updateCientifico(CientificosDto cientifico) {
 		
 		ConnectionDB conexion = new ConnectionDB();
-		
+		conexion.useDB("proyectos");
 		try {
 			Statement statement = conexion.crearConexion().createStatement();
 			String sql = "UPDATE cientificos SET"
@@ -104,7 +115,7 @@ public class CientificosDao {
 	public void deleteCientifico(String dni) {
 		
 		ConnectionDB conexion = new ConnectionDB();
-		
+		conexion.useDB("proyectos");
 		try {
 			Statement statement = conexion.crearConexion().createStatement();
 			String sql = "DELETE FROM cientificos "
