@@ -30,8 +30,8 @@ public class Vista extends JFrame {
 	private JTextField textFieldID;
 	private JTextField textNombre;
 	private JTextField textHoras;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textAsignadoCientifico;
+	private JTextField textAsignadoProyecto;
 	private JTextField textFieldTCientificos;
 	private JTextField textFieldTProyectos;
 	private JTextField textFieldTAsignadoA;
@@ -120,7 +120,7 @@ public class Vista extends JFrame {
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(Color.BLACK);
-		separator.setBounds(20, 167, 988, 2);
+		separator.setBounds(0, 167, 1010, 2);
 		contentPane.add(separator);
 		
 		JPanel Cientificos_1 = new JPanel();
@@ -189,7 +189,7 @@ public class Vista extends JFrame {
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setForeground(Color.BLACK);
-		separator_1.setBounds(20, 344, 988, 2);
+		separator_1.setBounds(0, 344, 1008, 2);
 		contentPane.add(separator_1);
 		
 		JPanel PanelTablaCientificos_1_1 = new JPanel();
@@ -217,15 +217,15 @@ public class Vista extends JFrame {
 		lblProyecto.setBounds(10, 43, 57, 13);
 		Cientificos_2.add(lblProyecto);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(77, 17, 228, 19);
-		Cientificos_2.add(textField);
+		textAsignadoCientifico = new JTextField();
+		textAsignadoCientifico.setColumns(10);
+		textAsignadoCientifico.setBounds(77, 17, 228, 19);
+		Cientificos_2.add(textAsignadoCientifico);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(77, 40, 228, 19);
-		Cientificos_2.add(textField_1);
+		textAsignadoProyecto = new JTextField();
+		textAsignadoProyecto.setColumns(10);
+		textAsignadoProyecto.setBounds(77, 40, 228, 19);
+		Cientificos_2.add(textAsignadoProyecto);
 		
 		JButton btnGuardarAsignado_A = new JButton("Guardar");
 		btnGuardarAsignado_A.setBounds(315, 16, 175, 21);
@@ -257,7 +257,7 @@ public class Vista extends JFrame {
 		
 		JSeparator separator_1_1 = new JSeparator();
 		separator_1_1.setForeground(Color.BLACK);
-		separator_1_1.setBounds(10, 521, 988, 2);
+		separator_1_1.setBounds(0, 521, 1010, 2);
 		contentPane.add(separator_1_1);
 		
 		
