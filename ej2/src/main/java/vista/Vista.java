@@ -43,8 +43,17 @@ public class Vista extends JFrame {
 	public 	JButton btnGuardarProyecto = new JButton("Guardar");
 	public 	JButton btnGuardarAsignado_A = new JButton("Guardar");
 
+	public JButton btnEliminar = new JButton("Eliminar");
+	public JButton btnEliminarProyecto = new JButton("Eliminar");
 
+	public JButton btnEditarProyecto = new JButton("Editar");
+	public JButton btnEditarAsignado_A = new JButton("Editar");
+	public JButton btnEditar = new JButton("Editar");
 
+	
+	public JButton btnSalir = new JButton("Salir");
+	public JButton btnAbout = new JButton("About");
+	
 	/**
 	 * Launch the application.
 	 */
@@ -103,7 +112,6 @@ public class Vista extends JFrame {
 		btnListar.setBounds(315, 39, 175, 21);
 		Cientificos.add(btnListar);
 		
-		JButton btnEditar = new JButton("Editar");
 		btnEditar.setBounds(315, 70, 85, 21);
 		Cientificos.add(btnEditar);
 		
@@ -111,7 +119,7 @@ public class Vista extends JFrame {
 		btnOK.setBounds(405, 70, 85, 21);
 		Cientificos.add(btnOK);
 		
-		JButton btnEliminar = new JButton("Eliminar");
+	
 		btnEliminar.setBounds(315, 101, 175, 21);
 		Cientificos.add(btnEliminar);
 		
@@ -161,7 +169,8 @@ public class Vista extends JFrame {
 		btnListarProyecto.setBounds(315, 39, 175, 21);
 		Cientificos_1.add(btnListarProyecto);
 		
-		JButton btnEditarProyecto = new JButton("Editar");
+	
+
 		btnEditarProyecto.setBounds(315, 70, 85, 21);
 		Cientificos_1.add(btnEditarProyecto);
 		
@@ -169,7 +178,6 @@ public class Vista extends JFrame {
 		btnOKProyecto.setBounds(405, 70, 85, 21);
 		Cientificos_1.add(btnOKProyecto);
 		
-		JButton btnEliminarProyecto = new JButton("Eliminar");
 		btnEliminarProyecto.setBounds(315, 101, 175, 21);
 		Cientificos_1.add(btnEliminarProyecto);
 		
@@ -238,7 +246,6 @@ public class Vista extends JFrame {
 		btnListarAsignado_A.setBounds(315, 39, 175, 21);
 		Cientificos_2.add(btnListarAsignado_A);
 		
-		JButton btnEditarAsignado_A = new JButton("Editar");
 		btnEditarAsignado_A.setBounds(315, 70, 85, 21);
 		Cientificos_2.add(btnEditarAsignado_A);
 		
@@ -250,11 +257,10 @@ public class Vista extends JFrame {
 		btnEliminarAsignado_A.setBounds(315, 101, 175, 21);
 		Cientificos_2.add(btnEliminarAsignado_A);
 		
-		JButton btnSalir = new JButton("Salir");
+	
 		btnSalir.setBounds(919, 537, 85, 21);
 		contentPane.add(btnSalir);
 		
-		JButton btnAbout = new JButton("About");
 		btnAbout.setBounds(824, 537, 85, 21);
 		contentPane.add(btnAbout);
 		

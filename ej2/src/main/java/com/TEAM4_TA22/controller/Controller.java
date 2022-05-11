@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.PublicKey;
 
+import javax.swing.JOptionPane;
+
 import models.dao.CientificosDao;
 import models.dao.ProyectoDao;
 import models.dto.CientificosDto;
@@ -58,7 +60,6 @@ public class Controller implements ActionListener {
 
 		crearcientifico = new CientificosDto(vista.textDNI.getText(), vista.textNomApels.getText());
 		
-	    
 	    cientificos.createCientifico(crearcientifico);
 		//svservice.validarCreate(crearcientifico);
 		
@@ -80,7 +81,71 @@ public class Controller implements ActionListener {
 			//
 		}
 		
+		//Editar
 		
+		if(e.getSource() == this.vista.btnEditar) {
+			
+			//cientificos.updateCientifico(crearcientifico);
+		}
+		
+		
+		
+		if(e.getSource() == this.vista.btnEditarProyecto) {
+			
+			//proyecto.updateProyecto(crearproyecto);
+
+		}
+		
+	
+		
+		if(e.getSource() == this.vista.btnEditarAsignado_A) {
+			//
+			//
+		}
+		
+		
+		
+		
+		//Eliminar id
+		
+		if(e.getSource() == this.vista.btnEliminar) {
+			
+			//cientificos.deleteCientifico(crearcientifico);
+			
+		}
+		
+		if(e.getSource() == this.vista.btnEliminarProyecto) {
+			
+			
+			
+			//proyecto.deleteProyecto();
+			
+		}
+		
+		
+		//About
+		
+		if(e.getSource() == this.vista.btnAbout) {
+			
+			
+			
+			JOptionPane.showMessageDialog(null, " Team 4 "); 
+			
+		}
+		
+		
+		
+		
+		
+		//salir
+		
+		if(e.getSource() == this.vista.btnSalir) {
+			
+			
+			
+	         System.exit(0); 
+			
+		}
 		
 	}
 
