@@ -8,6 +8,7 @@ import models.dao.CientificosDao;
 import models.dao.ProyectoDao;
 import models.dto.CientificosDto;
 import models.dto.ProyectoDto;
+import models.services.CientificoService;
 import views.MenuPrincipal;
 import vista.Vista;
 
@@ -18,6 +19,7 @@ public class Controller implements ActionListener {
 	private ProyectoDao proyecto; 
 	private CientificosDto crearcientifico;
 	private ProyectoDto crearproyecto;
+	CientificoService svservice = new CientificoService();
 
 	private Vista vista; 
 	
@@ -55,7 +57,12 @@ public class Controller implements ActionListener {
 			System.out.println("Guardar Cientificos");
 
 		crearcientifico = new CientificosDto(vista.textDNI.getText(), vista.textNomApels.getText());
-		cientificos.createCientifico(crearcientifico);
+		
+	    
+	    cientificos.createCientifico(crearcientifico);
+		//svservice.validarCreate(crearcientifico);
+		
+		
 		}
 		
 		if(e.getSource() == this.vista.btnGuardarProyecto) {
