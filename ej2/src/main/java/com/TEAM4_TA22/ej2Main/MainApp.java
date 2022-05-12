@@ -1,7 +1,7 @@
 package com.TEAM4_TA22.ej2Main;
 
-import com.TEAM4_TA22.controller.Controller;
 
+import controller.Controller;
 import models.conexion.ConnectionDB;
 import models.dao.CientificosDao;
 import models.dao.ProyectoDao;

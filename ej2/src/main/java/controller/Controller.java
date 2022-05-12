@@ -1,13 +1,16 @@
 package controller;
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.PublicKey;
 
 import javax.swing.JOptionPane;
 
+import models.dao.AsignadoDao;
 import models.dao.CientificosDao;
 import models.dao.ProyectoDao;
+import models.dto.AsignadoDto;
 import models.dto.CientificosDto;
 import models.dto.ProyectoDto;
 import models.services.CientificoService;
@@ -20,6 +23,10 @@ public class Controller implements ActionListener {
 	private ProyectoDao proyecto; 
 	private CientificosDto crearcientifico;
 	private ProyectoDto crearproyecto;
+	private AsignadoDao asignadodao;
+	private AsignadoDto asignado;
+
+
 	CientificoService svservice = new CientificoService();
 
 	private Vista vista; 
@@ -33,49 +40,76 @@ public class Controller implements ActionListener {
 		this.vista.btnGuardarProyecto.addActionListener(this);
 		this.vista.btnGuardarAsignado_A.addActionListener(this);
 		this.vista.btnEditar.addActionListener(this);
-		this.vista.btnEliminar.addActionListener(this);
-		this.vista.btnGuardarCientifico.addActionListener(this);
-		this.vista.btnListar.addActionListener(this);
-		this.vista.btnAbout.addActionListener(this);
+		this.vista.textProyectoEditarEliminar.addActionListener(this);
+		this.vista.btnEditarProyecto.addActionListener(this);
+		this.vista.btnGuardarP.addActionListener(this);
+		this.vista.btnEliminarProyecto.addActionListener(this);
 		this.vista.btnSalir.addActionListener(this);
+		this.vista.btnAbout.addActionListener(this);
+		this.vista.btnListarProyecto.addActionListener(this);
+		this.vista.btnGuardarCientifico.addActionListener(this);
+		this.vista.btnEliminar.addActionListener(this);
+		this.vista.btnListar.addActionListener(this);
 
 		
-		
 
-		
-		
+
 		vista.setVisible(true);
 	
 		
+
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()== this.vista.btnGuardarCientificos) {
 			System.out.println("Guardar Cientificos");
-			crearcientifico = new CientificosDto(vista.textDNI.getText(), vista.textNomApels.getText());
-		    cientificos.createCientifico(crearcientifico);
+
+		crearcientifico = new CientificosDto(vista.textDNI.getText(), vista.textNomApels.getText());
+		
+	    cientificos.createCientifico(crearcientifico);
+		//svservice.validarCreate(crearcientifico);
 		
 		
 		}
 		
 		if(e.getSource() == this.vista.btnGuardarProyecto) {
-			int horas =  Integer.parseInt(vista.textHoras.getText());
+			String horas =  vista.textHoras.getText();
 			crearproyecto = new  ProyectoDto(vista.textFieldID.getText(), vista.textNombre.getText(),horas);
 			proyecto.createProyecto(crearproyecto);
 			System.out.println("Guardar Proyecto");
 
+			//
 		}
 		
+				
 		
 		if(e.getSource() == this.vista.btnGuardarAsignado_A) {
-			//
-			//
+			//textAsignadoCientifico
+			//textAsignadoProyecto
+			
+			AsignadoDto asignado = new AsignadoDto(vista.textAsignadoCientifico.getText(),vista.textAsignadoProyecto.getText());
+			asignadodao.createAsignado(asignado);
+			System.out.println("Insertar Proyecto");
+
+			
 		}
 		
-		//Mostrar los datos al editar
+		
+		
+		
+		
+		
+		//Editar
 		
 		if(e.getSource() == this.vista.btnEditar) {
 			
@@ -84,9 +118,16 @@ public class Controller implements ActionListener {
 			
 			System.out.println("Dentro de editar");
 
+			
 			//Mandar  dni
 			CientificosDto cientifico =  cientificos.readCientifico(vista.textCientificosEditarEliminar.getText());
-										
+			
+			
+			
+			System.out.println(cientifico.toString());
+				
+			
+			
 			//mostrar los campos de ese DNI con el  objeto devuelto
 		
 			//set
@@ -95,22 +136,32 @@ public class Controller implements ActionListener {
 			textNomApels = cientifico.getNomApels();
 			vista.textNomApels.setText(cientifico.getNomApels());
 			
-
-		}
-		
-		
-		//update
-		if(e.getSource() == this.vista.btnGuardarCientifico) {
-			
-			CientificosDto cientifico = new CientificosDto(vista.textDNI.getText(), vista.textNomApels.getText());
-			cientificos.updateCientifico(cientifico);
+				
 		}
 		
 		
 		
 		if(e.getSource() == this.vista.btnEditarProyecto) {
 			
-			//proyecto.updateProyecto(crearproyecto);
+			
+			System.out.println("Dentro de editar");
+
+			
+			//Mandar  dni
+			ProyectoDto proyectos =  proyecto.selectOne(vista.textProyectoEditarEliminar.getText());
+			
+			
+			
+			System.out.println(proyectos.toString());
+				
+			
+			
+			//mostrar los campos de ese DNI con el  objeto devuelto
+		
+			//set
+			vista.textFieldID.setText(proyectos.getId());
+			vista.textNombre.setText(proyectos.getNombre());
+			vista.textHoras.setText(proyectos.getHoras());
 
 		}
 		
@@ -122,28 +173,17 @@ public class Controller implements ActionListener {
 		}
 		
 		
-		//listar cientifio
-		if(e.getSource() == this.vista.btnListar) {
-			
-			String dnimandado = "DNI ";
-			String textNomApels = " NOMBREAPELLIDO";
-			
-			String stringCientifico = "";
-			
-			CientificosDto cientifico  = cientificos.readCientifico(vista.textCientificosEditarEliminar.getText());
+		if(e.getSource() == this.vista.btnGuardarP) {
 			
 			
-			//set
-			stringCientifico += cientifico.getDni()+" ";
-			stringCientifico += cientifico.getNomApels();
-			
-			vista.textFieldTCientificos.setText(stringCientifico);
+			ProyectoDto proyectos = new ProyectoDto(vista.textFieldID.getText(),vista.textNombre.getText(),vista.textHoras.getText());
 
+			proyecto.updateProyecto(proyectos);
+			
 			
 			//
 			//
 		}
-		
 		
 		
 		
@@ -178,6 +218,23 @@ public class Controller implements ActionListener {
 		}
 		
 		
+	if(e.getSource() == this.vista.btnGuardarCientifico) {
+			
+			
+		CientificosDto cientifico= new CientificosDto(vista.textDNI.getText(),vista.textNomApels.getText());
+
+			cientificos.updateCientifico(cientifico);;
+			
+			//vaciamos todos los campos
+			vista.textDNI.setText("");
+			vista.textNomApels.setText("");
+
+			
+		}
+		
+		
+		
+		
 		//About
 		
 		if(e.getSource() == this.vista.btnAbout) {
@@ -191,7 +248,6 @@ public class Controller implements ActionListener {
 		
 		
 		
-		
 		//salir
 		
 		if(e.getSource() == this.vista.btnSalir) {
@@ -199,6 +255,35 @@ public class Controller implements ActionListener {
 			
 			
 	         System.exit(0); 
+			
+		}
+		
+		
+		//btnListarProyecto
+		if(e.getSource() == this.vista.btnListarProyecto) {
+			
+			ProyectoDto proyect = proyecto.selectOne(vista.textProyectoEditarEliminar.getText());
+			String cliente = "";
+			cliente += proyect.getId();
+			cliente += proyect.getNombre();
+			cliente += proyect.getHoras();
+			vista.textFieldTProyectos.setText(cliente);
+			
+		}
+		
+		
+		//btnListar
+		
+		if(e.getSource() == this.vista.btnListar) {
+			
+			
+			CientificosDto clienteDto = cientificos.readCientifico(vista.textCientificosEditarEliminar.getText());
+			String cliente = "";
+			cliente += clienteDto.getDni();
+			cliente += clienteDto.getNomApels();
+			
+			vista.textFieldTCientificos.setText(cliente);
+			
 			
 		}
 		
