@@ -39,9 +39,10 @@ public class Vista extends JFrame {
 	public  JTextField textFieldTCientificos;
 	public  JTextField textFieldTProyectos;
 	public  JTextField textFieldTAsignadoA;
-	public  JButton btnGuardarCientificos = new JButton("Guardar");
-	public 	JButton btnGuardarProyecto = new JButton("Guardar");
-	public 	JButton btnGuardarAsignado_A = new JButton("Guardar");
+	public  JButton btnGuardarCientificos = new JButton("Crear");
+	public 	JButton btnGuardarProyecto = new JButton("Crear");
+	public 	JButton btnGuardarAsignado_A = new JButton("Crear");
+	public JButton btnGuardarCientifico = new JButton("Guardar");
 
 	public JButton btnEliminar = new JButton("Eliminar");
 	public JButton btnEliminarProyecto = new JButton("Eliminar");
@@ -49,6 +50,8 @@ public class Vista extends JFrame {
 	public JButton btnEditarProyecto = new JButton("Editar");
 	public JButton btnEditarAsignado_A = new JButton("Editar");
 	public JButton btnEditar = new JButton("Editar");
+	public JButton btnGuardarAsignado = new JButton("Guardar");
+	public JButton btnGuardarP = new JButton("Guardar");
 
 	
 	public JButton btnSalir = new JButton("Salir");
@@ -56,6 +59,7 @@ public class Vista extends JFrame {
 	private JTextField textCientificosEditarEliminar;
 	private JTextField textProyectoEditarEliminar;
 	private JTextField textField_1;
+	
 	
 	/**
 	 * Launch the application.
@@ -119,7 +123,7 @@ public class Vista extends JFrame {
 		Cientificos.add(btnEditar);
 		
 	
-		btnEliminar.setBounds(410, 101, 80, 21);
+		btnEliminar.setBounds(315, 126, 175, 21);
 		Cientificos.add(btnEliminar);
 		
 		textCientificosEditarEliminar = new JTextField();
@@ -130,6 +134,10 @@ public class Vista extends JFrame {
 		JLabel lblEliminarDNI = new JLabel("DNI");
 		lblEliminarDNI.setBounds(10, 105, 45, 13);
 		Cientificos.add(lblEliminarDNI);
+		
+		
+		btnGuardarCientifico.setBounds(405, 101, 85, 21);
+		Cientificos.add(btnGuardarCientifico);
 		
 		JPanel PanelTablaCientificos = new JPanel();
 		PanelTablaCientificos.setBorder(new TitledBorder(null, "TABLA CIENTIFICOS", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -182,7 +190,7 @@ public class Vista extends JFrame {
 		btnEditarProyecto.setBounds(315, 101, 90, 21);
 		Cientificos_1.add(btnEditarProyecto);
 		
-		btnEliminarProyecto.setBounds(415, 101, 75, 21);
+		btnEliminarProyecto.setBounds(315, 124, 175, 21);
 		Cientificos_1.add(btnEliminarProyecto);
 		
 		JLabel lblNewLabel = new JLabel("Horas:");
@@ -201,6 +209,11 @@ public class Vista extends JFrame {
 		JLabel lblIEditarEliminarProyecto = new JLabel("ID");
 		lblIEditarEliminarProyecto.setBounds(10, 105, 45, 13);
 		Cientificos_1.add(lblIEditarEliminarProyecto);
+		
+		
+		
+		btnGuardarP.setBounds(405, 101, 85, 21);
+		Cientificos_1.add(btnGuardarP);
 		
 		JPanel PanelTablaCientificos_1 = new JPanel();
 		PanelTablaCientificos_1.setLayout(null);
@@ -263,7 +276,7 @@ public class Vista extends JFrame {
 		Cientificos_2.add(btnEditarAsignado_A);
 		
 		JButton btnEliminarAsignado_A = new JButton("Eliminar");
-		btnEliminarAsignado_A.setBounds(412, 101, 78, 21);
+		btnEliminarAsignado_A.setBounds(315, 124, 175, 21);
 		Cientificos_2.add(btnEliminarAsignado_A);
 		
 		textField_1 = new JTextField();
@@ -274,6 +287,10 @@ public class Vista extends JFrame {
 		JLabel lblEditarEliminarAsignadoA = new JLabel("ID");
 		lblEditarEliminarAsignadoA.setBounds(10, 105, 45, 13);
 		Cientificos_2.add(lblEditarEliminarAsignadoA);
+		
+		
+		btnGuardarAsignado.setBounds(405, 101, 85, 21);
+		Cientificos_2.add(btnGuardarAsignado);
 		
 	
 		btnSalir.setBounds(919, 537, 85, 21);
