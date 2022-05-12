@@ -1,5 +1,7 @@
 package models.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -11,7 +13,7 @@ public class ProyectoDao {
 	//CREATE
 	public void createProyecto(ProyectoDto proyecto){
 		ConnectionDB conexion = new ConnectionDB();
-		
+		conexion.useDB("proyectos");
 			try {
 				Statement statement = conexion.crearConexion().createStatement();
 				String sql = "INSERT INTO proyecto(Id,Nombre,Horas) VALUES"
@@ -28,10 +30,45 @@ public class ProyectoDao {
 	}
 	
 	//READ
+	public ProyectoDto readProyecto(String id) {
+		ConnectionDB conexion = new ConnectionDB();
+		conexion.useDB("proyectos");
+		boolean existe = false;
+		
+		ProyectoDto proyecto = null;
+		
+		try {
+			String sql = "SELECT * FROM proyectos WHERE Id = '?'";
+			PreparedStatement preparedStatemnt = conexion.crearConexion().prepareStatement(sql);
+			preparedStatemnt.setString(1, id);
+			
+			ResultSet resultSet = preparedStatemnt.executeQuery();
+			
+			while(resultSet.next()) {
+				
+				existe = true;
+				String nombre = resultSet.getString("Nombre");
+				int horas = resultSet.getInt("Horas");
+				proyecto = new ProyectoDto(id,nombre,horas);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(existe) {
+			return proyecto;
+		}else {
+			return null;
+		}
+		
+	}
 	
 	//UPDATE
 	public void updateProyecto(ProyectoDto proyecto){
 		ConnectionDB conexion = new ConnectionDB();
+		conexion.useDB("proyectos");
 		try {
 			Statement statement = conexion.crearConexion().createStatement();
 			String sql = "UPDATE proyecto SET"
@@ -51,12 +88,13 @@ public class ProyectoDao {
 	}
 	
 	//DELETE
-	public void deleteProyecto(ProyectoDto proyecto){
+	public void deleteProyecto(String id){
 		ConnectionDB conexion = new ConnectionDB();
+		conexion.useDB("proyectos");
 		try {
 			Statement statement = conexion.crearConexion().createStatement();
 			String sql = "DELETE FROM proyecto"
-					+ "WHERE Id='"+proyecto.getId()+"';";
+					+ "WHERE Id='"+ id +"';";
 			statement.executeUpdate(sql);
 			statement.close();
 			conexion.closeConnection();

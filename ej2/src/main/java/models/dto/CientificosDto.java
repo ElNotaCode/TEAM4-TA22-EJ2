@@ -10,6 +10,9 @@ public class CientificosDto {
 	private String dni;
 	private String nomApels;
 	
+	public CientificosDto() {
+	}
+	
 	//constructor con sus parametros
 	public CientificosDto(String dni, String nomApels) {
 		this.dni = dni;
@@ -31,6 +34,11 @@ public class CientificosDto {
 
 	public void setNomApels(String nomApels) {
 		this.nomApels = nomApels;
+	}
+
+	@Override
+	public String toString() {
+		return "CientificosDto [dni=" + dni + ", nomApels=" + nomApels + "]";
 	}
 	
 	
