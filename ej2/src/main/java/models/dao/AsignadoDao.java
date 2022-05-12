@@ -14,7 +14,6 @@ public class AsignadoDao {
 		
 		ConnectionDB conexion = new ConnectionDB();
 		conexion.crearConexion();
-		conexion.useDB("proyectos");
 		
 		try {
 			
@@ -54,7 +53,6 @@ public class AsignadoDao {
 		
 		ConnectionDB conexion = new ConnectionDB();
 		conexion.crearConexion();
-		conexion.useDB("proyectos");
 		
 		try {
 			//TODO: Revisar esto
@@ -82,7 +80,6 @@ public class AsignadoDao {
 		
 		ConnectionDB conexion = new ConnectionDB();
 		conexion.crearConexion();
-		conexion.useDB("proyectos");
 		
 		try {
 			//TODO: Revisar

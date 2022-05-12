@@ -13,7 +13,6 @@ public class ProyectoDao {
 	//CREATE
 	public void createProyecto(ProyectoDto proyecto){
 		ConnectionDB conexion = new ConnectionDB();
-		conexion.useDB("proyectos");
 			try {
 				Statement statement = conexion.crearConexion().createStatement();
 				String sql = "INSERT INTO proyecto(Id,Nombre,Horas) VALUES"
@@ -32,7 +31,6 @@ public class ProyectoDao {
 	//READ
 	public ProyectoDto readProyecto(String id) {
 		ConnectionDB conexion = new ConnectionDB();
-		conexion.useDB("proyectos");
 		boolean existe = false;
 		
 		ProyectoDto proyecto = null;
@@ -68,7 +66,6 @@ public class ProyectoDao {
 	//UPDATE
 	public void updateProyecto(ProyectoDto proyecto){
 		ConnectionDB conexion = new ConnectionDB();
-		conexion.useDB("proyectos");
 		try {
 			Statement statement = conexion.crearConexion().createStatement();
 			String sql = "UPDATE proyecto SET"
@@ -90,7 +87,6 @@ public class ProyectoDao {
 	//DELETE
 	public void deleteProyecto(String id){
 		ConnectionDB conexion = new ConnectionDB();
-		conexion.useDB("proyectos");
 		try {
 			Statement statement = conexion.crearConexion().createStatement();
 			String sql = "DELETE FROM proyecto"
