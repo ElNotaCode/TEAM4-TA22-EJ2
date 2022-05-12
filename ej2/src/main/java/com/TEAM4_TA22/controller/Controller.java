@@ -33,6 +33,8 @@ public class Controller implements ActionListener {
 		this.vista.btnGuardarCientificos.addActionListener(this); //para activarle un listenner
 		this.vista.btnGuardarProyecto.addActionListener(this);
 		this.vista.btnGuardarAsignado_A.addActionListener(this);
+		this.vista.btnEditar.addActionListener(this);
+
 		
 		vista.setVisible(true);
 	
@@ -85,7 +87,33 @@ public class Controller implements ActionListener {
 		
 		if(e.getSource() == this.vista.btnEditar) {
 			
-			//cientificos.updateCientifico(crearcientifico);
+			String dnimandado = "";
+			String textNomApels = "";
+			
+			System.out.println("Dentro de editar");
+
+			
+			//Mandar  dni
+			CientificosDto cientifico =  cientificos.readCientifico(vista.textDNI.getText());
+			
+			
+			
+			System.out.println(cientifico.toString());
+				
+			
+			
+			//mostrar los campos de ese DNI con el  objeto devuelto
+		
+			//set
+			dnimandado = cientifico.getDni();
+			vista.textDNI.setText(cientifico.getDni());
+			textNomApels = cientifico.getNomApels();
+			vista.textNomApels.setText(cientifico.getNomApels());
+			
+			if(dnimandado.equals(vista.textDNI.getText()) || textNomApels.equals(vista.textNomApels.getText())) {
+				cientifico = new CientificosDto(vista.textDNI.getText(), vista.textNomApels.getText());
+				cientificos.updateCientifico(cientifico);
+			}		
 		}
 		
 		
@@ -110,15 +138,29 @@ public class Controller implements ActionListener {
 		
 		if(e.getSource() == this.vista.btnEliminar) {
 			
-			//cientificos.deleteCientifico(crearcientifico);
+			//enviamos el dni 
+			cientificos.deleteCientifico(vista.textCientificosEditarEliminar.getText());
+			
+			//vaciamos todos los campos
+			vista.textDNI.setText("");
+			vista.textNomApels.setText("");
+			vista.textCientificosEditarEliminar.setText("");
+
 			
 		}
 		
 		if(e.getSource() == this.vista.btnEliminarProyecto) {
 			
 			
+			//enviamos el id 
+			proyecto.deleteProyecto(vista.textProyectoEditarEliminar.getText());
 			
-			//proyecto.deleteProyecto();
+			//vaciamos todos los campos
+			vista.textFieldID.setText("");
+			vista.textNombre.setText("");
+			vista.textHoras.setText("");
+			vista.textProyectoEditarEliminar.setText("");
+
 			
 		}
 		

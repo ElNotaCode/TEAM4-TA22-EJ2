@@ -1,7 +1,7 @@
 package models.dto;
 
 public class ProyectoDto {
-
+	
 	private String id;
 	private String nombre;
 	private int horas;
@@ -34,6 +34,11 @@ public class ProyectoDto {
 
 	public void setHoras(int horas) {
 		this.horas = horas;
+	}
+	
+	@Override
+	public String toString() {
+		return "ProyectoDto [id=" + id + ", nombre=" + nombre + ", horas=" + horas + "]";
 	}
 	
 }

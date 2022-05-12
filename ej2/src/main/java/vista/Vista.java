@@ -56,11 +56,21 @@ public class Vista extends JFrame {
 	
 	public JButton btnSalir = new JButton("Salir");
 	public JButton btnAbout = new JButton("About");
+<<<<<<< HEAD
 	private JTextField textCientificosEditarEliminar;
 	private JTextField textProyectoEditarEliminar;
 	private JTextField textField_1;
 	
 	
+=======
+	public JTextField textCientificosEditarEliminar = new JTextField();
+
+	public JTextField textProyectoEditarEliminar = new JTextField();
+
+	public JTextField textAsignadoEditarEliminar = new JTextField();
+
+
+>>>>>>> master
 	/**
 	 * Launch the application.
 	 */
@@ -126,7 +136,6 @@ public class Vista extends JFrame {
 		btnEliminar.setBounds(315, 126, 175, 21);
 		Cientificos.add(btnEliminar);
 		
-		textCientificosEditarEliminar = new JTextField();
 		textCientificosEditarEliminar.setBounds(66, 102, 239, 19);
 		Cientificos.add(textCientificosEditarEliminar);
 		textCientificosEditarEliminar.setColumns(10);
@@ -201,7 +210,6 @@ public class Vista extends JFrame {
 		Cientificos_1.add(textHoras);
 		textHoras.setColumns(10);
 		
-		textProyectoEditarEliminar = new JTextField();
 		textProyectoEditarEliminar.setColumns(10);
 		textProyectoEditarEliminar.setBounds(63, 102, 239, 19);
 		Cientificos_1.add(textProyectoEditarEliminar);
@@ -236,11 +244,11 @@ public class Vista extends JFrame {
 		PanelTablaCientificos_1_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "TABLA ASIGNADO_A", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		PanelTablaCientificos_1_1.setBounds(10, 356, 500, 155);
 		contentPane.add(PanelTablaCientificos_1_1);
+	
 		
-		textFieldTAsignadoA = new JTextField();
-		textFieldTAsignadoA.setColumns(10);
-		textFieldTAsignadoA.setBounds(10, 28, 480, 117);
-		PanelTablaCientificos_1_1.add(textFieldTAsignadoA);
+		//textFieldTAsignadoA.setColumns(10);
+		//textFieldTAsignadoA.setBounds(10, 28, 480, 117);
+		//PanelTablaCientificos_1_1.add(textFieldTAsignadoA);
 		
 		JPanel Cientificos_2 = new JPanel();
 		Cientificos_2.setLayout(null);
@@ -279,10 +287,10 @@ public class Vista extends JFrame {
 		btnEliminarAsignado_A.setBounds(315, 124, 175, 21);
 		Cientificos_2.add(btnEliminarAsignado_A);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(77, 102, 228, 19);
-		Cientificos_2.add(textField_1);
+		textAsignadoEditarEliminar = new JTextField();
+		textAsignadoEditarEliminar.setColumns(10);
+		textAsignadoEditarEliminar.setBounds(77, 102, 228, 19);
+		Cientificos_2.add(textAsignadoEditarEliminar);
 		
 		JLabel lblEditarEliminarAsignadoA = new JLabel("ID");
 		lblEditarEliminarAsignadoA.setBounds(10, 105, 45, 13);
