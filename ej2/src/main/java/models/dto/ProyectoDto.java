@@ -4,9 +4,14 @@ public class ProyectoDto {
 	
 	private String id;
 	private String nombre;
-	private int horas;
+	private String horas;
 	
-	public ProyectoDto(String id, String nombre, int horas) {
+	
+	public ProyectoDto() {
+		
+	}
+	
+	public ProyectoDto(String id, String nombre, String horas) {
 		this.id = id;
 		this.nombre = nombre;
 		this.horas = horas;
@@ -28,11 +33,11 @@ public class ProyectoDto {
 		this.nombre = nombre;
 	}
 
-	public int getHoras() {
+	public String getHoras() {
 		return horas;
 	}
 
-	public void setHoras(int horas) {
+	public void setHoras(String horas) {
 		this.horas = horas;
 	}
 	

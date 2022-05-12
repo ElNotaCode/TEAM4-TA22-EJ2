@@ -5,6 +5,14 @@ public class AsignadoDto {
 	private String dni;
 	private String id;
 	
+	
+	
+	
+	public AsignadoDto(String dni, String id) {
+		super();
+		this.dni = dni;
+		this.id = id;
+	}
 	public String getDni() {
 		return dni;
 	}

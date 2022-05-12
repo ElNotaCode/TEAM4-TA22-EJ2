@@ -56,36 +56,19 @@ public class Vista extends JFrame {
 	
 	public JButton btnSalir = new JButton("Salir");
 	public JButton btnAbout = new JButton("About");
-<<<<<<< HEAD
-	private JTextField textCientificosEditarEliminar;
-	private JTextField textProyectoEditarEliminar;
-	private JTextField textField_1;
-	
-	
-=======
+	public JTextField textField_1;	
 	public JTextField textCientificosEditarEliminar = new JTextField();
-
 	public JTextField textProyectoEditarEliminar = new JTextField();
-
 	public JTextField textAsignadoEditarEliminar = new JTextField();
+	public JButton btnListar = new JButton("Listar");
+	public JButton btnListarProyecto = new JButton("Listar");
+	public JButton btnListarAsignado_A = new JButton("Listar");
 
 
->>>>>>> master
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Vista frame = new Vista();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-		}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -100,7 +83,7 @@ public class Vista extends JFrame {
 		
 		JPanel Cientificos = new JPanel();
 		Cientificos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "CIENTIFICOS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		Cientificos.setBounds(508, 10, 500, 147);
+		Cientificos.setBounds(508, 10, 500, 159);
 		contentPane.add(Cientificos);
 		Cientificos.setLayout(null);
 		
@@ -125,7 +108,6 @@ public class Vista extends JFrame {
 		btnGuardarCientificos.setBounds(315, 16, 175, 21);
 		Cientificos.add(btnGuardarCientificos);
 		
-		JButton btnListar = new JButton("Listar");
 		btnListar.setBounds(315, 39, 175, 21);
 		Cientificos.add(btnListar);
 		
@@ -190,7 +172,8 @@ public class Vista extends JFrame {
 		btnGuardarProyecto.setBounds(315, 16, 175, 21);
 		Cientificos_1.add(btnGuardarProyecto);
 		
-		JButton btnListarProyecto = new JButton("Listar");
+		
+
 		btnListarProyecto.setBounds(315, 39, 175, 21);
 		Cientificos_1.add(btnListarProyecto);
 		
@@ -276,7 +259,6 @@ public class Vista extends JFrame {
 		btnGuardarAsignado_A.setBounds(315, 16, 175, 21);
 		Cientificos_2.add(btnGuardarAsignado_A);
 		
-		JButton btnListarAsignado_A = new JButton("Listar");
 		btnListarAsignado_A.setBounds(315, 39, 175, 21);
 		Cientificos_2.add(btnListarAsignado_A);
 		

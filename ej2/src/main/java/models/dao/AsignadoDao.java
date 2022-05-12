@@ -3,41 +3,45 @@ package models.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import models.conexion.ConnectionDB;
 import models.dto.AsignadoDto;
+import models.dto.CientificosDto;
 
 public class AsignadoDao {
 	
 	//CREATE
+	
+	
+	
+	
 	public void createAsignado(AsignadoDto asignado) {
-		
-		ConnectionDB conexion = new ConnectionDB();
-		conexion.crearConexion();
-		
-		try {
-			
-			String sql = "INSERT INTO asignado_a(dni,id) VALUES (?,?)";
-			PreparedStatement st = conexion.crearConexion().prepareStatement(sql);
-			
-			st.setString(1, asignado.getDni());
-			st.setString(2, asignado.getId());
-			
-			/*
-			 * executeUpdate() : This method is used for execution of DML statement
-			 * (INSERT, UPDATE and DELETE) which is return int value, count of the affected rows.
-			 */
-			
-			st.executeUpdate();
-			
-			st.close();
-			conexion.closeConnection();
-			
-		} catch (SQLException e) {
-			// TODO: handle exception
-		}
-		
-	}
+        //accedemos a la base de datos
+        ConnectionDB conexion = new ConnectionDB();
+
+            try {
+            	//conexion.useDB("proyectos");
+                //creamos statement
+                Statement statement = conexion.crearConexion().createStatement();
+                //creamos la query y las variables las rellenamos con los getters del objeto
+                String sql = "INSERT INTO asignado_a (dni,id) VALUES"
+                        + "('"+asignado.getDni()+"','"+asignado.getId()+"');";
+                //la ejecutamos
+                statement.executeUpdate(sql);
+                //statement close
+                statement.close();
+                //close conexion
+                conexion.closeConnection();
+                //TODO: informamos de que se ha insertado correctamente
+            } catch (SQLException e) {
+                // TODO: informamos de que NO se ha insertado correctamente
+                //pasamos el error por consola
+                System.out.println(e.getMessage());
+            }
+
+    }
+	
 	
 	//READ Podemos buscar por proyecto o por dni
 	public AsignadoDto readAsigando(AsignadoDto asignado) {

@@ -54,10 +54,10 @@ public class CientificosDao {
 			//Vamos a usar el prepared statement.
 			//Es lo mismo que un statement, pero se hace al revés.
 			//Primero sql.
-			String sql = "SELECT * FROM cientificos WHERE dni = '?'";
+			String sql = "SELECT * FROM cientificos WHERE dni = ?";
 			PreparedStatement preparedStatement = conexion.crearConexion().prepareStatement(sql);
 			preparedStatement.setString(1, dni);
-
+System.out.println(sql);
 			ResultSet result = preparedStatement.executeQuery();
 			
 			while(result.next()) {
@@ -72,16 +72,13 @@ public class CientificosDao {
 			
 			result.close();
 			conexion.closeConnection();
-			
-		} catch (SQLException e) {
-			// TODO: handle exception
-		}
-		
-		if(existe) {
+			System.out.println(cientifico);
 			return cientifico;
-		}else {
+
+		} catch (SQLException e) {
 			return null;
 		}
+		
 		
 
 	}
@@ -93,10 +90,11 @@ public class CientificosDao {
 		ConnectionDB conexion = new ConnectionDB();
 		try {
 			Statement statement = conexion.crearConexion().createStatement();
-			String sql = "UPDATE cientificos SET"
+			String sql = "UPDATE cientificos SET "
 					+ "DNI='" + cientifico.getDni() + "',"
 					+ "NomApels='" + cientifico.getNomApels()+"'"
 					+ "WHERE DNI='"+cientifico.getDni()+"';";
+			System.out.println(sql);
 			statement.execute(sql);
 			statement.close();
 			conexion.closeConnection();
